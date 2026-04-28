@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<Authors>Harlan</Authors>
+	<Version>1.0.1</Version>
+	<FileVersion>1.0.1</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+	  <PackageReference Include="M3u8Downloader_H.Abstractions" Version="1.0.6" />
+	  <PackageReference Include="M3u8Downloader_H.Attributes" Version="1.0.7" />
+	  <PackageReference Include="M3u8Downloader_H.Common" Version="1.0.1" />
+	</ItemGroup>
+
+</Project>

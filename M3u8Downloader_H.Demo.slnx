@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="M3u8Downloader_H.Demo/M3u8Downloader_H.Demo.csproj" />
+  <Project Path="M3u8Downloader_H.Gui/M3u8Downloader_H.Gui.csproj" />
+</Solution>
