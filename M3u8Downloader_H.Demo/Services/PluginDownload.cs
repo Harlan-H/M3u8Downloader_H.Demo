@@ -16,7 +16,7 @@ namespace M3u8Downloader_H.Demo.Plugins.Services
         private readonly IDownloadContext downloadContext;
 
         //此方法 在当前类中不使用
-        public Func<Stream, CancellationToken, Stream> HandleDataFunc { get; set; } = default!;
+        public Func<Stream, CancellationToken,Task< Stream>> HandleDataFunc { get; set; } = default!;
 
         //此方法 在当前类中不使用
         public Func<string, Stream, CancellationToken, Task> WriteToFileFunc { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -85,12 +85,12 @@ namespace M3u8Downloader_H.Demo.Plugins.Services
             downloadContext.Log.Info("退出StartDownload");
         }
 
-        public Stream HandleData(Stream stream, CancellationToken cancellationToken)
+        public Task<Stream> HandleData(Stream stream, CancellationToken cancellationToken)
         {
             downloadContext.Log.Info("进入HandleData方法");
             //这里没有调用原始方法是因为 原始的方法只处理默认的数据流 无法处理非标准加密
             //比如魔改aes 甚至有自己实现的别的什么加密方式等 你都可以重写这个方法实现自己的
-            return stream.AesDecrypt(m3UKeyInfo.BKey, m3UKeyInfo.IV);
+            return Task.FromResult( stream.AesDecrypt(m3UKeyInfo.BKey, m3UKeyInfo.IV));
         }
     }
 }

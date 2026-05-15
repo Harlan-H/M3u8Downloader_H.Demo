@@ -11,19 +11,17 @@ namespace M3u8Downloader_H.Demo
     public class Gui : IWindowPlugin
     {
         private IWindowContext windowContext = default!;
+
+        public Type ViewType => typeof(MainWindowView);
+
         public void InitializeWindow(IWindowContext windowContext)
         {
             this.windowContext = windowContext;
         }
 
-
-        public UserControl CreateMainView()
+        public object CreateMainView()
         {
-            return new MainWindowView()
-            {
-                DataContext = new MainWindowViewModel(windowContext)
-            };
+            return new MainWindowViewModel(windowContext);
         }
-
     }
 }
